@@ -43,17 +43,8 @@ const employees = [
 function newEmployeeObject (employeeObject){
  let bonus;
  let bonusPercentage = 0;
-  if (employeeObject.employeeNumber.length == 4) {
-    bonusPercentage += 0.05;
-  }
-  else if (employeeObject.reviewRating == 3) {
-    bonus = 0.04 * employeeObject.annualSalary;
-  }
-  else if (employeeObject.reviewRating == 4) {
-    bonus = 0.06 * employeeObject.annualSalary;
-  }
-  else if (employeeObject.reviewRating == 5) {
-    bonus = 0.1 * employeeObject.annualSalary;
+  if (employeeObject.annualSalary > 65000){
+    bonus = 0.01 * employeeObject.annualSalary; 
   }
   else if (employeeObject.reviewRating == 3 && employeeObject.employeeNumber.length == 4) {
     bonus = 0.09 * employeeObject.annualSalary;
@@ -64,12 +55,21 @@ function newEmployeeObject (employeeObject){
   else if (employeeObject.reviewRating == 5 && employeeObject.employeeNumber.length == 4) {
     bonus = 0.13 * employeeObject.annualSalary;
   }
-  else if (employeeObject.annualSalary > 65000){
-    bonus = 0.01 * employeeObject.annualSalary;
+  else if (employeeObject.reviewRating <= 2){
+    bonus = 0;
   }
-  else {
-    console.log('Error!')
+  else if (employeeObject.reviewRating == 3) {
+    bonus = 0.04 * employeeObject.annualSalary;
   }
+  else if (employeeObject.reviewRating == 4) {
+    bonus = 0.06 * employeeObject.annualSalary;
+  }
+  else if (employeeObject.reviewRating == 5) {
+    bonus = 0.1 * employeeObject.annualSalary;
+  }
+  // else {
+  //   console.log('Error!');
+  // }
   console.log(bonus);
   // let newEmployee = {
   //   name = employeeObject.name,
@@ -80,5 +80,8 @@ function newEmployeeObject (employeeObject){
 
 console.log(employees[1].employeeNumber.length);
 console.log( employees );
-newEmployeeObject(employees[2]);
 newEmployeeObject(employees[0]);
+newEmployeeObject(employees[1]);
+newEmployeeObject(employees[2]);
+newEmployeeObject(employees[3]);
+newEmployeeObject(employees[4]);
