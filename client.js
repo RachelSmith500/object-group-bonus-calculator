@@ -43,45 +43,57 @@ const employees = [
 function newEmployeeObject (employeeObject){
  let bonus;
  let bonusPercentage = 0;
-  if (employeeObject.annualSalary > 65000){
-    bonus = 0.01 * employeeObject.annualSalary; 
+
+  for(let i = 0; i< employees.length; i++){
+   
+  if (employeeObject[i].annualSalary > 65000){
+    bonus = 0.01 * employeeObject[i].annualSalary; 
+    bonusPercentage = .01;
   }
-  else if (employeeObject.reviewRating == 3 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.09 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 3 && employeeObject[i].employeeNumber.length == 4) {
+    bonus = 0.09 * employeeObject[i].annualSalary;
+    bonusPercentage = .09;
   }
-  else if (employeeObject.reviewRating == 4 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.11 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 4 && employeeObject[i].employeeNumber.length == 4) {
+    bonus = 0.11 * employeeObject[i].annualSalary;
+    bonusPercentage = .11;
   }
-  else if (employeeObject.reviewRating == 5 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.13 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 5 && employeeObject[i].employeeNumber.length == 4) {
+    bonus = 0.13 * employeeObject[i].annualSalary;
+    bonusPercentage = .13;
   }
-  else if (employeeObject.reviewRating <= 2){
+  else if (employeeObject[i].reviewRating <= 2){
     bonus = 0;
+    bonusPercentage = 0; 
   }
-  else if (employeeObject.reviewRating == 3) {
-    bonus = 0.04 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 3) {
+    bonus = 0.04 * employeeObject[i].annualSalary;
+    bonusPercentage = .04; 
   }
-  else if (employeeObject.reviewRating == 4) {
-    bonus = 0.06 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 4) {
+    bonus = 0.06 * employeeObject[i].annualSalary;
+    bonusPercentage = .06;
   }
-  else if (employeeObject.reviewRating == 5) {
-    bonus = 0.1 * employeeObject.annualSalary;
+  else if (employeeObject[i].reviewRating == 5) {
+    bonus = 0.1 * employeeObject[i].annualSalary;
+    bonusPercentage = .1;
   }
-  // else {
-  //   console.log('Error!');
-  // }
-  console.log(bonus);
-  // let newEmployee = {
-  //   name = employeeObject.name,
-  //   bonusPercentage = '',
-  //   totalCompensation = '',
-  //   totalBonus = '',
-  };
+  else {
+    console.log('Error!');
+  }
+  
+  let newEmployee = {
+    name: employeeObject[i].name,
+    bonusPercentage: bonusPercentage,
+    totalCompensation: Number(employeeObject[i].annualSalary)+Math.round(Number(bonus)),
+    totalBonus: Math.round(bonus),
+  }
+  console.log(newEmployee)
+
+  }
+
+};
 
 console.log(employees[1].employeeNumber.length);
 console.log( employees );
-newEmployeeObject(employees[0]);
-newEmployeeObject(employees[1]);
-newEmployeeObject(employees[2]);
-newEmployeeObject(employees[3]);
-newEmployeeObject(employees[4]);
+newEmployeeObject(employees);
