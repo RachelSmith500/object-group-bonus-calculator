@@ -46,6 +46,15 @@ function newEmployeeObject (employeeObject){
   if (employeeObject.employeeNumber.length == 4) {
     bonusPercentage += 0.05;
   }
+    if (employeeObject.reviewRating == 3) {
+      bonus = (bonusPercentage + 0.04) * employeeObject.annualSalary;
+    }
+    else if (employeeObject.reviewRating == 4) {
+      bonus = (bonusPercentage + 0.06) * employeeObject.annualSalary;
+    }
+    else if (employeeObject.reviewRating == 5) {
+      bonus = 0.13 * employeeObject.annualSalary;
+  }
   else if (employeeObject.reviewRating == 3) {
     bonus = 0.04 * employeeObject.annualSalary;
   }
@@ -54,15 +63,6 @@ function newEmployeeObject (employeeObject){
   }
   else if (employeeObject.reviewRating == 5) {
     bonus = 0.1 * employeeObject.annualSalary;
-  }
-  else if (employeeObject.reviewRating == 3 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.09 * employeeObject.annualSalary;
-  }
-  else if (employeeObject.reviewRating == 4 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.11 * employeeObject.annualSalary;
-  }
-  else if (employeeObject.reviewRating == 5 && employeeObject.employeeNumber.length == 4) {
-    bonus = 0.13 * employeeObject.annualSalary;
   }
   else if (employeeObject.annualSalary > 65000){
     bonus = 0.01 * employeeObject.annualSalary;
